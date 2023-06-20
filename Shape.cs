@@ -1,37 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 
 namespace shakillar
 {
-    public abstract class Shape
+    public abstract class Shape<T>
     {
         public abstract double GetArea();
     }
 
-    public class Square : Shape
+    public class Square<T> : Shape<T>
     {
-        private double side;
+        private T side;
 
-        public Square(double side)
+        public Square(T side)
         {
             this.side = side;
         }
 
         public override double GetArea()
         {
-            return side * side;
+            double value = Convert.ToDouble(side);
+            return value * value;
         }
     }
 
-    public class Rectangle : Shape
+    public class Rectangle<T> : Shape<T>
     {
-        private double width;
-        private double height;
+        private T width;
+        private T height;
 
-        public Rectangle(double width, double height)
+        public Rectangle(T width, T height)
         {
             this.width = width;
             this.height = height;
@@ -39,16 +36,18 @@ namespace shakillar
 
         public override double GetArea()
         {
-            return width * height;
+            double w = Convert.ToDouble(width);
+            double h = Convert.ToDouble(height);
+            return w * h;
         }
     }
 
-    public class Rhombus : Shape
+    public class Rhombus<T> : Shape<T>
     {
-        private double diagonal1;
-        private double diagonal2;
+        private T diagonal1;
+        private T diagonal2;
 
-        public Rhombus(double diagonal1, double diagonal2)
+        public Rhombus(T diagonal1, T diagonal2)
         {
             this.diagonal1 = diagonal1;
             this.diagonal2 = diagonal2;
@@ -56,22 +55,25 @@ namespace shakillar
 
         public override double GetArea()
         {
-            return (diagonal1 * diagonal2) / 2;
+            double d1 = Convert.ToDouble(diagonal1);
+            double d2 = Convert.ToDouble(diagonal2);
+            return (d1 * d2) / 2;
         }
     }
 
-    public class Circle : Shape
+    public class Circle<T> : Shape<T>
     {
-        private double radius;
+        private T radius;
 
-        public Circle(double radius)
+        public Circle(T radius)
         {
             this.radius = radius;
         }
 
         public override double GetArea()
         {
-            return Math.PI * radius * radius;
+            double r = Convert.ToDouble(radius);
+            return Math.PI * r * r;
         }
     }
 }
